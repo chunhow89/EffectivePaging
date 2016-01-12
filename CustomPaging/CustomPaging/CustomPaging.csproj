@@ -93,7 +93,9 @@
     <Content Include="css\skins\skin-yellow.min.css" />
     <Content Include="css\skins\_all-skins.css" />
     <Content Include="css\skins\_all-skins.min.css" />
+    <Content Include="DataReset.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="Defaultv2.aspx" />
     <Content Include="img\avatar.png" />
     <Content Include="img\avatar04.png" />
     <Content Include="img\avatar2.png" />
@@ -847,12 +849,26 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataReset.aspx.cs">
+      <DependentUpon>DataReset.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DataReset.aspx.designer.cs">
+      <DependentUpon>DataReset.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Defaultv2.aspx.cs">
+      <DependentUpon>Defaultv2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Defaultv2.aspx.designer.cs">
+      <DependentUpon>Defaultv2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
