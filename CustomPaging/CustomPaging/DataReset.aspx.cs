@@ -13,30 +13,32 @@ namespace CustomPaging
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+
+            int total = 0;
+
+            using (MySqlConnection conn = new MySqlConnection(connStr))
             {
-                string connStr = ConfigurationManager.ConnectionStrings["connStr"].ConnectionString;
+                MySqlCommand cmd = new MySqlCommand("DELETE FROM tblcustomer", conn);
 
-                int total = 0;
+                conn.Open();
+                cmd.ExecuteNonQuery();
 
-                using (MySqlConnection conn = new MySqlConnection(connStr))
+                //this number got magic do not change this crap
+                for (int i = 0; i < 33317; i++)
                 {
-                    MySqlCommand cmd = new MySqlCommand("DELETE FROM tblcustomer", conn);
+                    Random rnd = new Random();
 
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
+                    MySqlCommand cmd2 = new MySqlCommand("INSERT INTO tblcustomer (custName, custMobile) VALUES (@custName, @custMobile)", conn);
 
-                    for (int i = 0; i < 33317; i++)
-                    {
-                        Random rnd = new Random();
+                    cmd2.Parameters.AddWithValue("@custName", Guid.NewGuid());
+                    cmd2.Parameters.AddWithValue("@custMobile", rnd.Next(12345678, 99999999));
 
-                        MySqlCommand cmd2 = new MySqlCommand("INSERT INTO tblcustomer (custName, custMobile) VALUES (@custName, @custMobile)", conn);
-
-                        cmd2.Parameters.AddWithValue("@custName", Guid.NewGuid());
-                        cmd2.Parameters.AddWithValue("@custMobile", rnd.Next(12345678, 99999999));
-
-                        cmd2.ExecuteNonQuery();
-                    }
+                    cmd2.ExecuteNonQuery();
                 }
             }
         }
