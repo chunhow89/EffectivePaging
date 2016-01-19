@@ -134,7 +134,7 @@ namespace CustomPaging
             }
 
             //Add the Last Button.
-            if (currentPage != pageCount)
+            if (currentPage < pageCount)
             {
                 pages.Add(new ListItem("Last", pageCount.ToString()));
             }
